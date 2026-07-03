@@ -1,11 +1,11 @@
 @echo off
+title Video Downloader (MKV - Best Quality)
 
-"C:\yt-dlp\yt-dlp.exe" ^
- -f "bv*[vcodec^=avc1][ext=mp4]+ba[ext=m4a]/b[ext=mp4]/best" ^
- --merge-output-format mp4 ^
- --audio-quality 0 ^
- --no-write-subs ^
- --no-write-auto-subs ^
- -a urls.txt
+"%~dp0yt-dlp.exe" ^
+  -f bv*+ba/b ^
+  --merge-output-format mkv ^
+  --no-write-subs --no-write-auto-subs ^
+  -o "%%(title)s.%%(ext)s" ^
+  -a urls.txt
 
 pause
