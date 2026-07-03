@@ -1,14 +1,15 @@
 @echo off
+title Audio Downloader
 
-"C:\yt-dlp\yt-dlp.exe" ^
+"%~dp0yt-dlp.exe" ^
+  -f bestaudio[ext=webm]/bestaudio ^
   -x ^
-  --audio-format mp3 ^
-  --audio-quality 0 ^
-  --embed-thumbnail ^
-  --add-metadata ^
-  --no-write-subs ^
-  --no-write-auto-subs ^
-  -o "%%(title)s.%%(ext)s" ^
+  --write-thumbnail ^
+  --convert-thumbnails jpg ^
+  --write-subs --sub-format lrc --convert-subs lrc --write-auto-subs ^
+  --embed-metadata ^
+  --exec "ffmpeg -y -i \"{}\" -i \"{}.jpg\" -filter_complex \"[1:v]crop=min(iw,ih):min(iw,ih)\" -map 0 -map 1 -c copy -disposition:v:1 attached_pic \"{}.temp\" && move /Y \"{}.temp\" \"{}\"" ^
+  -o "%%(title)s - %%(uploader)s.%%(ext)s" ^
   -a urls.txt
 
 pause
