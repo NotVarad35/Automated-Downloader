@@ -32,14 +32,14 @@ Manually entering command-line arguments for repetitive media downloads is ineff
 
 ### Prerequisites
 
-1. **yt-dlp** — Download `yt-dlp.exe` from the [official releases page](https://github.com/yt-dlp/yt-dlp/releases) and place it in the same folder as the `.bat` files.
-2. **ffmpeg** — Required for square cover art cropping. Download from the [official builds page](https://www.gyani.dev/ffmpeg/builds/) and place `ffmpeg.exe` in the same folder, or add it to your `PATH`.
+1. **yt-dlp** — Download `yt-dlp.exe` from the [official releases page](https://github.com/yt-dlp/yt-dlp/releases) and place it in the `windows/` folder.
+2. **ffmpeg** — Required for square cover art cropping. Download from the [official builds page](https://www.gyani.dev/ffmpeg/builds/) and place `ffmpeg.exe` in the `windows/` folder, or add it to your `PATH`.
 
 All scripts use `%~dp0yt-dlp.exe` — they look for `yt-dlp.exe` in their own directory, making the folder fully self-contained.
 
 ### Usage
 
-1. Open `urls.txt` and paste the links (one per line). Save and close.
+1. Open `windows/urls.txt` and paste the links (one per line). Save and close.
 2. Double-click the script you need:
 
 | Script | Format | Best for |
@@ -106,9 +106,9 @@ export PATH="$HOME/.local/bin:$PATH"    # add to ~/.bashrc or ~/.zshrc
 Then use from anywhere:
 
 ```bash
-audio.sh      # or
-video.sh      # or
-mp4.sh
+audio      # or
+video      # or
+mp4
 ```
 
 ### macOS notes
@@ -154,20 +154,21 @@ yt-dlp -f "bv*[vcodec=avc1][ext=mp4]+ba[ext=m4a]/b[ext=mp4]/best"
 
 ```
 Automated-Downloader/
-├── audio.bat          → Windows: OPUS audio + square cover art + lyrics
-├── video.bat          → Windows: Best quality MKV (AV1/VP9)
-├── mp4.bat            → Windows: Compatible MP4 (H.264)
-├── urls.txt           → Windows: shared URL list
-├── yt-dlp.exe         → Windows: yt-dlp binary (place here)
-├── ffmpeg.exe         → Windows: ffmpeg binary (place here)
+├── windows/
+│   ├── audio.bat      → OPUS audio + square cover art + lyrics
+│   ├── video.bat      → Best quality MKV (AV1/VP9)
+│   ├── mp4.bat        → Compatible MP4 (H.264)
+│   ├── urls.txt       → Paste URLs here (one per line)
+│   ├── yt-dlp.exe     → yt-dlp binary (place here)
+│   └── ffmpeg.exe     → ffmpeg binary (place here, for cover art)
 │
 ├── linux/
-│   ├── audio.sh       → Linux/macOS: OPUS audio + square cover art + lyrics
-│   ├── video.sh       → Linux/macOS: Best quality MKV (AV1/VP9)
-│   ├── mp4.sh         → Linux/macOS: Compatible MP4 (H.264)
-│   ├── lib.sh         → Linux/macOS: shared functions (editor detection, etc.)
-│   ├── urls.txt       → Linux/macOS: shared URL list
-│   └── setup.sh       → Linux/macOS: install to ~/.local/bin
+│   ├── audio.sh       → OPUS audio + square cover art + lyrics
+│   ├── video.sh       → Best quality MKV (AV1/VP9)
+│   ├── mp4.sh         → Compatible MP4 (H.264)
+│   ├── lib.sh         → Shared functions (editor detection, etc.)
+│   ├── urls.txt       → Paste URLs here (one per line)
+│   └── setup.sh       → Install to ~/.local/bin for system-wide use
 │
 ├── LICENSE
 └── README.md

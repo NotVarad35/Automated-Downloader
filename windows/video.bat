@@ -6,6 +6,6 @@ title Video Downloader (MKV - Best Quality)
   --merge-output-format mkv ^
   --no-write-subs --no-write-auto-subs ^
   -o "%%(title)s.%%(ext)s" ^
-  -a urls.txt
+  -a "%~dp0urls.txt"
 
 pause

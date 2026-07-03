@@ -6,6 +6,6 @@ title Video Downloader (MP4 - H.264)
   --merge-output-format mp4 ^
   --no-write-subs --no-write-auto-subs ^
   -o "%%(title)s.%%(ext)s" ^
-  -a urls.txt
+  -a "%~dp0urls.txt"
 
 pause

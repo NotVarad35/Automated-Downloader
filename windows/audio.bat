@@ -10,6 +10,6 @@ title Audio Downloader
   --embed-metadata ^
   --exec "ffmpeg -y -i \"{}\" -i \"{}.jpg\" -filter_complex \"[1:v]crop=min(iw,ih):min(iw,ih)\" -map 0 -map 1 -c copy -disposition:v:1 attached_pic \"{}.temp\" && move /Y \"{}.temp\" \"{}\"" ^
   -o "%%(title)s - %%(uploader)s.%%(ext)s" ^
-  -a urls.txt
+  -a "%~dp0urls.txt"
 
 pause
